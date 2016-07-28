@@ -98,13 +98,10 @@ public class MulticastDelegate<T> {
  *
  *  - parameter left:   The multicast delegate
  *  - parameter right:  The delegate to be added
- *
- *  - returns: The `MulticastDelegate` instance with the `right` delegate parameter added
  */
-public func +=<T>(left: MulticastDelegate<T>, right: T) -> MulticastDelegate<T> {
+public func +=<T>(left: MulticastDelegate<T>, right: T) {
 	
 	left.addDelegate(right)
-	return left
 }
 
 /**
@@ -114,13 +111,10 @@ public func +=<T>(left: MulticastDelegate<T>, right: T) -> MulticastDelegate<T> 
  *
  *  - parameter left:   The multicast delegate
  *  - parameter right:  The delegate to be removed
- *
- *  - returns: The `MulticastDelegate` instance with the `right` delegate parameter removed
  */
-public func -=<T>(left: MulticastDelegate<T>, right: T) -> MulticastDelegate<T> {
+public func -=<T>(left: MulticastDelegate<T>, right: T) {
 	
 	left.removeDelegate(right)
-	return left
 }
 
 /**
@@ -134,8 +128,7 @@ public func -=<T>(left: MulticastDelegate<T>, right: T) -> MulticastDelegate<T> 
  *  - returns: The `MulticastDelegate` after all its delegates have been invoked
  */
 infix operator |> { associativity left precedence 130 }
-public func |><T>(left: MulticastDelegate<T>, right: @noescape (T) -> ()) -> MulticastDelegate<T> {
+public func |><T>(left: MulticastDelegate<T>, right: @noescape (T) -> ()) {
 	
 	left.invokeDelegates(right)
-	return left
 }
