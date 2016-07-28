@@ -14,7 +14,7 @@ import Foundation
 public class MulticastDelegate<T> {
 	
     /// The delegates hash table.
-    private var delegates: HashTable<AnyObject>
+    private let delegates: HashTable<AnyObject>
     
     /**
      *  Use this method to initialize a new `MulticastDelegate` specifying whether delegate references should be weak or
