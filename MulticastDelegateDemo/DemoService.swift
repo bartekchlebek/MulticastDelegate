@@ -22,7 +22,7 @@ class DemoService {
 	func getData(_ value:String) {
 		
 		let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-		DispatchQueue.main.after(when: delayTime) { [unowned self] () -> Void in
+		DispatchQueue.main.asyncAfter(deadline: delayTime) { [unowned self] () -> Void in
 			
 			self.delegate |> { delegate in
 				

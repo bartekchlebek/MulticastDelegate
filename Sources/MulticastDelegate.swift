@@ -14,7 +14,7 @@ import Foundation
 public class MulticastDelegate<T> {
 	
     /// The delegates hash table.
-    private let delegates: HashTable<AnyObject>
+    private let delegates: NSHashTable<AnyObject>
     
     /**
      *  Use this method to initialize a new `MulticastDelegate` specifying whether delegate references should be weak or
@@ -26,7 +26,7 @@ public class MulticastDelegate<T> {
      */
     public init(strongReferences: Bool = false) {
         
-        delegates = strongReferences ? HashTable() : HashTable.weakObjects()
+        delegates = strongReferences ? NSHashTable() : NSHashTable.weakObjects()
     }
     
     /**
@@ -36,8 +36,8 @@ public class MulticastDelegate<T> {
      *
      *  - returns: A new `MulticastDelegate` instance
      */
-    public init(options: PointerFunctions.Options) {
-        delegates = HashTable(options: options, capacity: 0)
+    public init(options: NSPointerFunctions.Options) {
+        delegates = NSHashTable(options: options, capacity: 0)
     }
 	
     /**
